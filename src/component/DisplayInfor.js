@@ -1,4 +1,5 @@
 import React from 'react'
+import './DisplayInfor.scss';
 
 class DisplayInfor extends React.Component {
     state = {
@@ -17,7 +18,8 @@ class DisplayInfor extends React.Component {
         //destructuring arrayy
         const { listUsers } = this.props;
         return (
-            <div>Display Infor
+            <div className='display-infor-container'>
+                Display Infor
                 <hr></hr>
                 <div>
                     <span onClick={(event) => { this.handleShowHide(event) }}>

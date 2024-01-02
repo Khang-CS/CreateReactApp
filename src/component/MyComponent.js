@@ -5,11 +5,16 @@ import UserInfor from './Userinfor';
 import DisplayInfor from './DisplayInfor';
 
 class MyComponent extends React.Component {
+
+    state = {
+        listUsers: [
+            { id: 1, name: 'Hoi Dan IT', age: '30' },
+            { id: 2, name: 'Eric', age: '26' },
+            { id: 3, name: 'HarryPhamDev', age: '17' }
+        ]
+    }
     render() {
-
-
-        const myAge = 50;
-
+        //DRY: don't repeat yourself
 
         //JSX
         return (
@@ -17,7 +22,9 @@ class MyComponent extends React.Component {
             <div>My first component
                 <UserInfor />
                 <br></br>
-                <DisplayInfor name="Hoi Dan IT" age={myAge} />
+                <DisplayInfor
+                    listUsers={this.state.listUsers}
+                />
             </div >
         );
     }

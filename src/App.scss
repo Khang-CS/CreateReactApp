@@ -84,6 +84,9 @@ body {
 
 video {
   position: absolute;
-  bottom:0;
   width: 100%;
+
+  @media (min-width: 1700px) {
+    bottom:0;
+  }
 }

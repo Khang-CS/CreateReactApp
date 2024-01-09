@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from "react-icons/fc";
 import { ToastContainer, toast } from 'react-toastify';
 
-import { postCreateNewUser } from '../../../services/apiService';
+import { putUpdateUser } from '../../../services/apiService';
 import { useEffect } from 'react';
 import _ from 'lodash';
 
@@ -18,6 +18,8 @@ const ModalUpdateUser = (props) => {
         setRole('USER');
         setImage('');
         setPreviewImage('');
+        setUsername('');
+        props.resetUpdateData();
     };
 
     const [email, setEmail] = useState('');
@@ -53,13 +55,7 @@ const ModalUpdateUser = (props) => {
         console.log('upload file', event.target.files[0]);
     }
 
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
+
 
     const handleSubmitCreateUser = async () => {
         //validate
@@ -69,15 +65,12 @@ const ModalUpdateUser = (props) => {
         //     return;
         // }
 
-        if (!password) {
-            toast.error('Invalid Password');
-            return;
-        }
 
 
 
 
-        let data = await postCreateNewUser(email, password, username, role, image);
+
+        let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
         console.log('>> component res: ', data);
 

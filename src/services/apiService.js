@@ -17,9 +17,10 @@ const getAllUsers = () => {
     return axios.get('api/v1/participant/all');
 }
 
-const putUpdateUser = (username, role, image) => {
+const putUpdateUser = (id, username, role, image) => {
     //submit data
     const data = new FormData();
+    data.append('id', id)
     data.append('username', username);
     data.append('userImage', image);
     data.append('role', role);
